@@ -67,7 +67,7 @@ Here is an example of a **valid** request payload:
   - "3" or 3 means Pineapple
   - "4" or 4 means Mushrooms
   - "5" or 5 means Ham
-
+  
 Here are more **valid** payloads (test in Postman!):
 
 ```js
