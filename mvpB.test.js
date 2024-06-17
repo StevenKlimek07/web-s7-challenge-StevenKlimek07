@@ -107,7 +107,6 @@ function HelloWorld() {
     
       test('renders a text that reads "JavaScript is pretty awesome"', () => {
         render(<HelloWorld />);
-        // Using { exact: false } to allow partial and case-insensitive matching
         const jsAwesomeText = screen.queryByText("JavaScript is pretty awesome", { exact: false });
         expect(jsAwesomeText).toBeInTheDocument();
       });
