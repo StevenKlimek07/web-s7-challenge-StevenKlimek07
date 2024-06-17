@@ -2,37 +2,24 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-describe('Sprint 7 Challenge Learner Tests', () => {
-  /*
-  👉 TASK 1 - Unit Testing of sum function at the bottom of this module
+// describe('Sprint 7 Challenge Learner Tests', () => {
 
-  Test the following. You can create separate tests or a single test with multiple assertions.
+//   test('you can comment out this test', () => {
+//     expect(true).toBe(false)
+//   })
+// })
 
-    [1] sum() // throws an error 'pass valid numbers'
-    [2] sum(2, 'seven') // throws an error 'pass valid numbers'
-    [3] sum(1, 3) // returns 4
-    [4] sum('1', 2) // returns 3
-    [5] sum('10', '3') // returns 13
-  */
+/*
+👉 TASK 1 - Unit Testing of sum function at the bottom of this module
 
-  /*
-  👉 TASK 2 - Integration Testing of HelloWorld component at the bottom of this module
+Test the following. You can create separate tests or a single test with multiple assertions.
 
-  Test the <HelloWorld /> component found below...
-    - using `screen.queryByText` to capture nodes
-    - using `toBeInTheDocument` to assert their existence in the DOM
-
-    [1] renders a link that reads "Home"
-    [2] renders a link that reads "About"
-    [3] renders a link that reads "Blog"
-    [4] renders a text that reads "The Truth"
-    [5] renders a text that reads "JavaScript is pretty awesome"
-    [6] renders a text that includes "javaScript is pretty" (use exact = false)
-  */
-  test('you can comment out this test', () => {
-    expect(true).toBe(false)
-  })
-})
+  [1] sum() // throws an error 'pass valid numbers'
+  [2] sum(2, 'seven') // throws an error 'pass valid numbers'
+  [3] sum(1, 3) // returns 4
+  [4] sum('1', 2) // returns 3
+  [5] sum('10', '3') // returns 13
+*/
 
 function sum(a, b) {
   a = Number(a)
@@ -42,7 +29,20 @@ function sum(a, b) {
   }
   return a + b
 }
+/*
+👉 TASK 2 - Integration Testing of HelloWorld component at the bottom of this module
 
+Test the <HelloWorld /> component found below...
+  - using `screen.queryByText` to capture nodes
+  - using `toBeInTheDocument` to assert their existence in the DOM
+
+  [1] renders a link that reads "Home"
+  [2] renders a link that reads "About"
+  [3] renders a link that reads "Blog"
+  [4] renders a text that reads "The Truth"
+  [5] renders a text that reads "JavaScript is pretty awesome"
+  [6] renders a text that includes "javaScript is pretty" (use exact = false)
+*/
 function HelloWorld() {
   return (
     <div>
@@ -61,3 +61,55 @@ function HelloWorld() {
     </div>
   )
 }
+
+    describe('Integration Testing of HelloWorld component at the bottom of this module', () => {
+      test('throws an error pass valid numbers', ( )=> 
+        {expect(() => sum()).toThrow('pass valid numbers');
+      });
+      test('throws an error pass valid numbers' , () => {
+        expect(() => sum(2, 'seven')).toThrow('pass valid numbers');
+      });
+      test('correctly returns the sum as 4', () => {
+        expect(sum(1, 3)).toBe(4);
+      });
+      test('correctly returns the sum as 3', () => {
+        expect(sum('1', 2)).toBe(3);
+      });
+      test('correctly returns the sum as 13', () => {
+        expect(sum('10', '3')).toBe(13);
+      });
+    });
+
+    describe('HelloWorld Component', () => {
+      test('renders a link with the text "Home"', () => {
+        render(<HelloWorld />);
+        const home= screen.queryByText('Home');
+        expect(home).toBeInTheDocument();
+      });
+    
+      test('renders a link with the text "About"', () => {
+        render(<HelloWorld />);
+        const about = screen.queryByText('About');
+        expect(about).toBeInTheDocument();
+      });
+    
+      test('renders a link with the text "Blog"', () => {
+        render(<HelloWorld />);
+        const blog = screen.queryByText('Blog');
+        expect(blog).toBeInTheDocument();
+      });
+    
+      test('renders a text that reads "The Truth"', () => {
+        render(<HelloWorld />);
+        const truth = screen.queryByText('The Truth');
+        expect(truth).toBeInTheDocument();
+      });
+    
+      test('renders a text that reads "JavaScript is pretty awesome"', () => {
+        render(<HelloWorld />);
+        // Using { exact: false } to allow partial and case-insensitive matching
+        const jsAwesomeText = screen.queryByText("JavaScript is pretty awesome", { exact: false });
+        expect(jsAwesomeText).toBeInTheDocument();
+      });
+      
+    } )
